@@ -1,0 +1,33 @@
+{
+    "products": [{
+            "id": 1,
+            "name": "Product B",
+            "price": 200,
+            "img": "https://lavenderstudio.com.vn/wp-content/uploads/2017/03/chup-anh-san-pham-my-pham.jpg"
+        },
+        {
+            "id": 2,
+            "name": "Product B",
+            "price": 200,
+            "img": "https://lavenderstudio.com.vn/wp-content/uploads/2017/03/chup-anh-san-pham-my-pham.jpg"
+        },
+        {
+            "id": 3,
+            "name": "Product B",
+            "price": 200,
+            "img": "https://lavenderstudio.com.vn/wp-content/uploads/2017/03/chup-anh-san-pham-my-pham.jpg"
+        },
+        {
+            "id": 4,
+            "name": "Product B",
+            "price": 200,
+            "img": "https://lavenderstudio.com.vn/wp-content/uploads/2017/03/chup-anh-san-pham-my-pham.jpg"
+        },
+        {
+            "name": "sfsdfsd",
+            "price": "24234234",
+            "img": "https://images.squarespace-cdn.com/content/v1/53883795e4b016c956b8d243/1568455300105-1X8EOW3FLT27EN19OO30/chup-anh-san-pham-shynh2019-4.jpg",
+            "id": 5
+        }
+    ]
+}
