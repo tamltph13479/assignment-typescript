@@ -1,33 +1,55 @@
 {
-    "products": [{
-            "id": 1,
-            "name": "Product B",
-            "price": 200,
-            "img": "https://lavenderstudio.com.vn/wp-content/uploads/2017/03/chup-anh-san-pham-my-pham.jpg"
-        },
-        {
-            "id": 2,
-            "name": "Product B",
-            "price": 200,
-            "img": "https://lavenderstudio.com.vn/wp-content/uploads/2017/03/chup-anh-san-pham-my-pham.jpg"
-        },
-        {
-            "id": 3,
-            "name": "Product B",
-            "price": 200,
-            "img": "https://lavenderstudio.com.vn/wp-content/uploads/2017/03/chup-anh-san-pham-my-pham.jpg"
-        },
-        {
-            "id": 4,
-            "name": "Product B",
-            "price": 200,
-            "img": "https://lavenderstudio.com.vn/wp-content/uploads/2017/03/chup-anh-san-pham-my-pham.jpg"
-        },
-        {
-            "name": "sfsdfsd",
-            "price": "24234234",
-            "img": "https://images.squarespace-cdn.com/content/v1/53883795e4b016c956b8d243/1568455300105-1X8EOW3FLT27EN19OO30/chup-anh-san-pham-shynh2019-4.jpg",
-            "id": 5
-        }
-    ]
+  "products": [
+    {
+      "id": 1,
+      "name": "Product B",
+      "price": 200,
+      "img": "https://lavenderstudio.com.vn/wp-content/uploads/2017/03/chup-anh-san-pham-my-pham.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Product B",
+      "price": 200,
+      "img": "https://lavenderstudio.com.vn/wp-content/uploads/2017/03/chup-anh-san-pham-my-pham.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Product B",
+      "price": 200,
+      "img": "https://lavenderstudio.com.vn/wp-content/uploads/2017/03/chup-anh-san-pham-my-pham.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Product B",
+      "price": 200,
+      "img": "https://lavenderstudio.com.vn/wp-content/uploads/2017/03/chup-anh-san-pham-my-pham.jpg"
+    },
+    {
+      "name": "lethetam",
+      "price": "231230",
+      "img": {},
+      "detail": "",
+      "id": 5
+    }
+  ],
+  "posts": [
+    {
+      "title": "Samsung Galaxy Buds 2",
+      "img": "http://res.cloudinary.com/ecommercer/image/upload/v1645420798/Anh/nho1dky2zlncghtcc8te.jpg",
+      "content": "iPhone 13 128GB Chính hãng (VN/A) là phiên bản được phân phối chính thức bởi Apple Việt Nam",
+      "id": "1"
+    },
+    {
+      "title": "Samsung Galaxy Buds 2",
+      "img": "http://res.cloudinary.com/ecommercer/image/upload/v1645420798/Anh/nho1dky2zlncghtcc8te.jpg",
+      "content": "iPhone 13 128GB Chính hãng (VN/A) là phiên bản được phân phối chính thức bởi Apple Việt Nam",
+      "id": "2"
+    },
+    {
+      "title": "Samsung Galaxy Buds 2",
+      "img": "http://res.cloudinary.com/ecommercer/image/upload/v1645420798/Anh/nho1dky2zlncghtcc8te.jpg",
+      "content": "iPhone 13 128GB Chính hãng (VN/A) là phiên bản được phân phối chính thức bởi Apple Việt Nam",
+      "id": "3"
+    }
+  ]
 }

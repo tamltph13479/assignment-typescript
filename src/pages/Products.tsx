@@ -8,7 +8,8 @@ type ProductsProps = {
 
 function Products(props: ProductsProps) {
     return (
-        <div>
+        <div className="">
+
             <ProductList products={props.products} />
         </div>
     )

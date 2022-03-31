@@ -4,96 +4,71 @@ type Props = {}
 
 const Bottom = (props: Props) => {
     return (
-        <footer className="footer mt-4">
-            {/* Footer Top */}
-            <div className="footer-top section pt-5 text-lg-start">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-5 col-md-6 col-12">
-                            {/* Single Widget */}
-                            <div className="single-footer about">
-                                <div className="logo">
-                                    <a href="index.html"><img src="images/logo2.png" alt="#" /></a>
-                                </div>
-                                <p className="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
-                                <p className="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
-                            </div>
-                            {/* End Single Widget */}
+        <>
+            <div>
+                <div className=" w-[1200px] m-auto grid grid-cols-4 pt-10 pb-10 gap-[20px] ">
+                    <div className="w-[320px] px-[20px] ">
+                        <div>
+                            <img src="https://rafcart.rslahmed.com/assets/images/svg/logo.svg" />
                         </div>
-                        <div className="col-lg-2 col-md-6 col-12">
-                            {/* Single Widget */}
-                            <div className="single-footer links">
-                                <h4>Information</h4>
-                                <ul>
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Faq</a></li>
-                                    <li><a href="#">Terms &amp; Conditions</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                    <li><a href="#">Help</a></li>
-                                </ul>
-                            </div>
-                            {/* End Single Widget */}
-                        </div>
-                        <div className="col-lg-2 col-md-6 col-12">
-                            {/* Single Widget */}
-                            <div className="single-footer links">
-                                <h4>Customer Service</h4>
-                                <ul>
-                                    <li ><a href="#">Payment Methods</a></li>
-                                    <li><a href="#">Money-back</a></li>
-                                    <li><a href="#">Returns</a></li>
-                                    <li><a href="#">Shipping</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                </ul>
-                            </div>
-                            {/* End Single Widget */}
-                        </div>
-                        <div className="col-lg-3 col-md-6 col-12">
-                            {/* Single Widget */}
-                            <div className="single-footer social">
-                                <h4>Get In Tuch</h4>
-                                {/* Single Widget */}
-                                <div className="contact">
-                                    <ul>
-                                        <li>NO. 342 - London Oxford Street.</li>
-                                        <li>012 United Kingdom.</li>
-                                        <li>info@eshop.com</li>
-                                        <li>+032 3456 7890</li>
-                                    </ul>
-                                </div>
-                                {/* End Single Widget */}
-                                <ul>
-                                    <li><a href="#"><i className="ti-facebook" /></a></li>
-                                    <li><a href="#"><i className="ti-twitter" /></a></li>
-                                    <li><a href="#"><i className="ti-flickr" /></a></li>
-                                    <li><a href="#"><i className="ti-instagram" /></a></li>
-                                </ul>
-                            </div>
-                            {/* End Single Widget */}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {/* End Footer Top */}
-            <div className="copyright pt-5 ">
-                <div className="container">
-                    <div className="inner">
-                        <div className="row">
-                            <div className="col-lg-6 col-12">
-                                <div className="left">
-                                    <p>Copyright © 2020 <a href="http://www.wpthemesgrid.com" target="_blank">Wpthemesgrid</a> - All Rights Reserved.</p>
-                                </div>
-                            </div>
-                            <div className="col-lg-6 col-12">
-                                <div className="right">
-                                    <img src="images/payments.png" alt="#" />
-                                </div>
+                        <p className="py-[10px] leading-5">Lorem ipsum, or it is sometimes kno wn, is dummy text used in laying out print</p>
+                        <div>
+                            <div className="footer_newslet">
+                                <h6 className="font-bold py-[10px]">NEWSLETTER</h6>
+                                <form className="footernews_form">
+                                    <input type="text" placeholder="Your email address" className="py-[10px] rounded-lg bg-none" />
+                                    <a href="#">
+                                        <button type="submit" className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Sing in</button>
+                                    </a>
+                                </form>
                             </div>
                         </div>
                     </div>
+                    <div className="intro px-[20px]">
+                        <div>
+
+                            <h4 className="font-bold leading-8 ">MY ACCOUNT</h4>
+                        </div>
+                        <div className="pt-[10px] leading-8">
+                            <p><a href="" className="no-underline text-blue-600 visited:text-purple-600 hover:text-red-500">Orders</a></p>
+                            <p><a href="" className="no-underline text-blue-600 visited:text-purple-600 hover:text-red-500">Wishlist</a></p>
+                            <p><a href="" className="no-underline text-blue-600 visited:text-purple-600 hover:text-red-500">Track Order</a></p>
+                            <p><a href="" className="no-underline text-blue-600 visited:text-purple-600 hover:text-red-500">Manage Account</a></p>
+                            <p><a href="" className="no-underline text-blue-600 visited:text-purple-600 hover:text-red-500">Return Order</a></p>
+                        </div>
+                    </div>
+                    <div className="intro px-[20px]">
+                        <div>
+
+                            <h4 className="font-bold leading-8 ">INFORMATION</h4>
+                        </div>
+                        <div className="pt-[10px] leading-8">
+                            <p><a href="" className="no-underline text-blue-600 visited:text-purple-600 hover:text-red-500">About Us</a></p>
+                            <p><a href="" className="no-underline text-blue-600 visited:text-purple-600 hover:text-red-500">Return Policy</a></p>
+                            <p><a href="" className="no-underline text-blue-600 visited:text-purple-600 hover:text-red-500">Terms &amp; condition</a></p>
+                            <p><a href="" className="no-underline text-blue-600 visited:text-purple-600 hover:text-red-500">Privacy Policy</a></p>
+                            <p><a href="" className="no-underline text-blue-600 visited:text-purple-600 hover:text-red-500">
+                                FAQ</a></p>
+                        </div>
+                    </div>
+                    <div className="intro px-[20px]">
+                        <div>
+                            <h4 className="font-bold leading-8 ">CONTACT</h4>
+                        </div>
+                        <div className="pt-[10px] leading-8">
+                            <p>Tòa nhà FPT Polytechnic, P. Trịnh Văn Bô, Xuân Phương, Nam Từ Liêm, Hà Nội</p>
+                            <p>Phone :+566 477 256, +566 254 575</p>
+                            <p>Email : Thetam1998@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="py-3 bg-[#2b2d42] text-center text-xs text-[#ffffff]">
+                    <p>© RAFCART - All Rights Reserved</p>
                 </div>
             </div>
-        </footer>
+
+
+        </>
     )
 }
 
