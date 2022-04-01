@@ -6,7 +6,7 @@ type PostTystProps = {
 }
 const Blog = ({ posts }: PostTystProps) => {
     return (
-        <div className="conten my-[20px]">
+        <div className="conten my-[20px] container" >
             <h1 className="font-bold text-[20px] py-[20px]">Recomended For You</h1>
             <div className="bg-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -29,9 +29,9 @@ const Blog = ({ posts }: PostTystProps) => {
                                         // </div>
                                         <div className="xl:w-1/3 md:w-1/2 p-4 overflow-hidden shadow-lg hover:scale-105 transition duration-500 cursor-pointer" key={index}>
                                             <div className="bg-white p-6 rounded-lg">
-                                                <a href={`/products/${post.id}`}>   <img className="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-6" src={post.img} /></a>
+                                                <a href={`/blog/${post._id}`}>   <img className="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-6" src={post.img} /></a>
                                                 <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">   {post.title}</h3>
-                                                <a href={`/products/${post.id}`}> <h2 className="text-lg text-gray-900 font-medium title-font mb-4">{post.content}</h2></a>
+                                                <a href={`/blog/${post._id}`}> <h2 className="text-lg text-gray-900 font-medium title-font mb-4">{post.content}</h2></a>
                                                 <p className="leading-relaxed text-base">dfsdfsdf</p>
                                             </div>
                                         </div>

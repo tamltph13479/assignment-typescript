@@ -1,27 +1,25 @@
 import React from 'react'
+import { CategoryType } from '../types/category';
 
-type Props = {}
+type Props = {
+    categorys: CategoryType[];
+}
 
-const Advise = (props: Props) => {
+const Advise = ({ categorys }: Props) => {
     return (
         <>
             <div className="border-solid border-2 border[#f3f3f3]">
 
-                <li className="px-[40px]  hover:bg-[#f3f3f3] list-none "><a href="#" className="no-underline ">The tam</a></li>
-                <hr />
-                <li className="px-[40px]  hover:bg-[#f3f3f3] list-none "><a href="#" className="no-underline ">The tam</a></li>
-                <hr />
-                <li className="px-[40px]  hover:bg-[#f3f3f3] list-none "><a href="#" className="no-underline ">The tam</a></li>
-                <hr />
-                <li className="px-[40px]  hover:bg-[#f3f3f3] list-none "><a href="#" className="no-underline ">The tam</a></li>
-                <hr />
-                <li className="px-[40px]  hover:bg-[#f3f3f3] list-none "><a href="#" className="no-underline ">The tam</a></li>
-                <hr />
-                <li className="px-[40px]  hover:bg-[#f3f3f3] list-none "><a href="#" className="no-underline ">The tam</a></li>
-                <hr />
-                <li className="px-[40px]  hover:bg-[#f3f3f3] list-none "><a href="#" className="no-underline ">The tam</a></li>
-                <hr />
-                <li className="px-[40px]  hover:bg-[#f3f3f3] list-none "><a href="#" className="no-underline ">The tam</a></li>
+
+                {categorys?.map((category, index) => {
+                    console.log(category)
+                    return (
+                        <>
+                            <li className="px-[40px]  hover:bg-[#f3f3f3] list-none "><a href="#" className="no-underline ">{category.name} </a></li>
+                            <hr />
+                        </>
+                    )
+                })}
 
 
 

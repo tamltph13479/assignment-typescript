@@ -40,6 +40,9 @@ import { UserType } from './types/user'
 import { addusers, listusers, removeusers, updateusers } from './api/user'
 import UserAdd from './pages/admin/user/add'
 import UserEdit from './pages/admin/user/edit'
+import Blog from './components/Blog'
+import BlogDetail from './pages/BlogDeatail'
+import PrivateRouter from './components/PrivateRouter'
 function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [products, setProducts] = useState<ProductType[]>([])
@@ -246,16 +249,20 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<WebsiteLayout />}>
-          <Route index element={<HomePage products={products} posts={posts} />} />
+          <Route index element={<HomePage products={products} posts={posts} categorys={category} />} />
           <Route path="products">
             <Route index element={<Products products={products} />} />
             <Route path="/products/:id" element={< ProductsDetail />} />
+          </Route>
+          <Route path="blog">
+            <Route index element={<Blog posts={posts} />} />
+            <Route path="/blog/:id" element={< BlogDetail />} />
           </Route>
 
         </Route>
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
-        <Route path="admin" element={<AdminLayout />}>
+        <Route path="admin" element={<PrivateRouter><AdminLayout /></PrivateRouter>}>
           <Route index element={<Dashboard />} />
           <Route path="products" >
             <Route index element={<ProductManager products={products} onRemove={onHanderRemove} />} />
