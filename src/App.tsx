@@ -24,7 +24,7 @@ import Signup from './pages/singup'
 import Signin from './pages/singin'
 import { BannerType } from './types/banner'
 
-import { listbanner, removebanner } from './api/banner'
+import { addbanner, listbanner, removebanner, updatebanner } from './api/banner'
 import BannerAdmin from './pages/admin/banner'
 import { CategoryType } from './types/category'
 import { addCategory, listCategory, removeCategory, updateCategory } from './api/category'
@@ -43,6 +43,9 @@ import UserEdit from './pages/admin/user/edit'
 import Blog from './components/Blog'
 import BlogDetail from './pages/BlogDeatail'
 import PrivateRouter from './components/PrivateRouter'
+import SearchPase from './pages/SearchPase'
+import BannerAdd from './pages/admin/banner/add'
+import BannerEdit from './pages/admin/banner/edit'
 function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [products, setProducts] = useState<ProductType[]>([])
@@ -94,6 +97,7 @@ function App() {
       const { data } = await remove(id);
       if (data) {
         toast.success("xoa thanh cong");
+        setProducts(products.filter(item => item._id !== id))
       }
     } catch (error: {}) {
       toast.error(error.response.data)
@@ -102,14 +106,15 @@ function App() {
 
   }
   // them
-  const onHandleAdd = async (products: ProductType) => {
+  const onHandleAdd = async (product: ProductType) => {
     try {
-      const { data } = await add(products);
+      const { data } = await add(product);
       if (data) {
         toast.success("Them thanh cong");
-
+        setProducts([...products, data]);
       }
-    } catch (error) {
+    } catch (error: {}) {
+      toast.error(error.response.data)
 
     }
   }
@@ -120,7 +125,8 @@ function App() {
       if (data) {
         toast.success("Sua thanh cong");
       }
-    } catch (error) {
+    } catch (error: {}) {
+      toast.error(error.response.data)
 
     }
   }
@@ -130,6 +136,7 @@ function App() {
       const { data } = await removebanner(id);
       if (data) {
         toast.success("xoa thanh cong");
+        setbanner(banners.filter(item => item._id !== id))
       }
     } catch (error: {}) {
       toast.error(error.response.data)
@@ -137,26 +144,56 @@ function App() {
     }
 
   }
-  // them danh muc
-  const onHandlAdd = async (category: CategoryType) => {
+  // them banner
+  const onHaAdd = async (banner: BannerType) => {
     try {
-      const { data } = await addCategory(category);
+      const { data } = await addbanner(banner);
       if (data) {
         toast.success("Them thanh cong");
+        setbanner([...banners, data]);
+      }
+    } catch (error: {}) {
+      toast.error(error.response.data)
+
+    }
+  }
+  // // cap nhap baner
+  const onHUpdate = async (banner: BannerType) => {
+    try {
+      const { data } = await updatebanner(banner);
+      if (data) {
+        toast.success("Sua thanh cong");
+      }
+    } catch (error: {}) {
+      toast.error(error.response.data)
+
+    }
+  }
+  // them danh muc
+  const onHandlAdd = async (categor: CategoryType) => {
+    try {
+      const { data } = await addCategory(categor);
+      if (data) {
+        toast.success("Them thanh cong");
+        setcategory([...category, data]);
 
       }
-    } catch (error) {
+    } catch (error: {}) {
+      toast.error(error.response.data)
 
     }
   }
   // cap nhap nhanh muc
-  const onHandlUpdate = async (category: CategoryType) => {
+  const onHandlUpdate = async (categor: CategoryType) => {
     try {
-      const { data } = await updateCategory(category);
+      const { data } = await updateCategory(categor);
       if (data) {
         toast.success("Sua thanh cong");
+        setcategory([...category, data]);
+
       }
-    } catch (error) {
+    } catch (error: {}) {
+      toast.error(error.response.data)
 
     }
   }
@@ -166,6 +203,7 @@ function App() {
       const { data } = await removeCategory(id);
       if (data) {
         toast.success("xoa thanh cong");
+        setcategory(category.filter(item => item._id !== id))
       }
     } catch (error: {}) {
       toast.error(error.response.data)
@@ -174,14 +212,15 @@ function App() {
 
   }
   // them bai viet
-  const onHanlAdd = async (posts: PostType) => {
+  const onHanlAdd = async (post: PostType) => {
     try {
-      const { data } = await addPost(posts);
+      const { data } = await addPost(post);
       if (data) {
         toast.success("Them thanh cong");
-
+        setPost([...posts, data]);
       }
-    } catch (error) {
+    } catch (error: {}) {
+      toast.error(error.response.data)
 
     }
   }
@@ -192,7 +231,8 @@ function App() {
       if (data) {
         toast.success("Sua thanh cong");
       }
-    } catch (error) {
+    } catch (error: {}) {
+      toast.error(error.response.data)
 
     }
   }
@@ -202,6 +242,7 @@ function App() {
       const { data } = await removePost(id);
       if (data) {
         toast.success("xoa thanh cong");
+        setPost(posts.filter(item => item._id !== id))
       }
     } catch (error: {}) {
       toast.error(error.response.data)
@@ -215,9 +256,10 @@ function App() {
       const { data } = await addusers(user);
       if (data) {
         toast.success("Them thanh cong");
-
+        setusers([...users, data]);
       }
-    } catch (error) {
+    } catch (error: {}) {
+      toast.error(error.response.data)
 
     }
   }
@@ -228,7 +270,8 @@ function App() {
       if (data) {
         toast.success("Sua thanh cong");
       }
-    } catch (error) {
+    } catch (error: {}) {
+      toast.error(error.response.data)
 
     }
   }
@@ -238,6 +281,7 @@ function App() {
       const { data } = await removeusers(id);
       if (data) {
         toast.success("xoa thanh cong");
+        setusers(users.filter(item => item._id !== id))
       }
     } catch (error: {}) {
       toast.error(error.response.data)
@@ -258,6 +302,9 @@ function App() {
             <Route index element={<Blog posts={posts} />} />
             <Route path="/blog/:id" element={< BlogDetail />} />
           </Route>
+          <Route path="search">
+            <Route index element={<SearchPase />} />
+          </Route>
 
         </Route>
         <Route path="/signup" element={<Signup />} />
@@ -271,6 +318,8 @@ function App() {
           </Route>
           <Route path="banner" >
             <Route index element={<BannerAdmin banners={banners} onRemove={removebaner} />} />
+            <Route path="add" element={<BannerAdd onAdd={onHaAdd} />} />
+            <Route path=":id/edit" element={<BannerEdit onUpdate={onHUpdate} />} />
           </Route>
           <Route path="category" >
             <Route index element={<CategoryAdmin categorys={category} onRemove={onHandrRemove} />} />
@@ -285,7 +334,6 @@ function App() {
           </Route>
           <Route path="user" >
             <Route index element={<UserAdmin users={users} onRemove={onHanRemove} />} />
-
             <Route path="add" element={<UserAdd onAdd={onHanAdd} />} />
             <Route path=":id/edit" element={<UserEdit onUpdate={onHanUpdate} />} />
           </Route>
@@ -297,3 +345,7 @@ function App() {
 }
 
 export default App
+function then(arg0: () => any) {
+  throw new Error('Function not implemented.')
+}
+

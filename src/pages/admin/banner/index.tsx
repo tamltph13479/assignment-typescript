@@ -32,7 +32,7 @@ const BannerAdmin = (props: ProductManagerProps) => {
                                 </div>
                                 <div className="mt-5 flex lg:mt-0 lg:ml-4">
                                     <span className="sm:ml-3">
-                                        <a href="/admin/products/add" className="no-underline" >
+                                        <a href="/admin/banner/add" className="no-underline" >
                                             <button type="button" className=" inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                                 Them Moi
                                             </button>
@@ -68,7 +68,7 @@ const BannerAdmin = (props: ProductManagerProps) => {
 
                                                                     <td><img src={banner.img} alt="" width="100px" /></td>
 
-                                                                    <td colSpan={2} >    <Link to={`/admin/products/${banner._id}/edit`} className="btn btn-primary">Update</Link>
+                                                                    <td colSpan={2} >    <Link to={`/admin/banner/${banner._id}/edit`} className="btn btn-primary">Update</Link>
                                                                         <button onClick={() => props.onRemove(banner._id)} className="btn btn-danger">Remove</button>
 
                                                                     </td>

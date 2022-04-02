@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 import { PostType } from '../types/Post';
 
 type PostTystProps = {
@@ -29,9 +30,9 @@ const Blog = ({ posts }: PostTystProps) => {
                                         // </div>
                                         <div className="xl:w-1/3 md:w-1/2 p-4 overflow-hidden shadow-lg hover:scale-105 transition duration-500 cursor-pointer" key={index}>
                                             <div className="bg-white p-6 rounded-lg">
-                                                <a href={`/blog/${post._id}`}>   <img className="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-6" src={post.img} /></a>
+                                                <NavLink to={`/blog/${post._id}`}>   <img className="no-underline lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-6" src={post.img} /></NavLink>
                                                 <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">   {post.title}</h3>
-                                                <a href={`/blog/${post._id}`}> <h2 className="text-lg text-gray-900 font-medium title-font mb-4">{post.content}</h2></a>
+                                                <NavLink className="no-underline" to={`/blog/${post._id}`}> <h2 className=" text-lg text-gray-900 font-medium title-font mb-4">{post.content}</h2></NavLink>
                                                 <p className="leading-relaxed text-base">dfsdfsdf</p>
                                             </div>
                                         </div>

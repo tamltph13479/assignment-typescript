@@ -1,6 +1,8 @@
 import React from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import { signup } from '../../../api/auth'
 import { UserType } from '../../../types/user'
 
 
@@ -19,12 +21,14 @@ type FromInput = {
 const UserAdd = (props: ProducAddProps) => {
     const { register, handleSubmit, formState: { errors } } = useForm<FromInput>();
     const navigate = useNavigate();
-    const onSubmit: SubmitHandler<FromInput> = data => {
-        props.onAdd(data)
-        navigate("/admin/user")
 
+    const onSubmit: SubmitHandler<FromInput> = async (user) => {
+        const { data } = await signup(user);
+        if (data) {
+            toast.success("Bạn đã đăng ký thành công");
+            navigate('/admin/user')
 
-
+        }
     }
     return (
         <>
@@ -35,7 +39,7 @@ const UserAdd = (props: ProducAddProps) => {
                             <div className="lg:flex lg:items-center lg:justify-between">
                                 <div className="flex-1 min-w-0 ">
                                     <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate mt-[30px] ">
-                                        Them bai viet
+                                        Them tài khoản
                                     </h2>
                                     <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
                                         <div className="mt-2 flex items-center text-sm text-gray-500">
@@ -48,11 +52,11 @@ const UserAdd = (props: ProducAddProps) => {
                                 </div>
                                 <div className="mt-5 flex lg:mt-0 lg:ml-4">
                                     <span className="sm:ml-3">
-                                        <a href="/admin/products" className="no-underline" >
+                                        <NavLink to="/admin/products" className="no-underline" >
                                             <button type="button" className=" inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                                 Quay lai
                                             </button>
-                                        </a>
+                                        </NavLink >
                                     </span>
                                 </div>
                             </div>

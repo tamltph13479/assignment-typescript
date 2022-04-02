@@ -1,4 +1,5 @@
-import { ProductType } from '../types/Product';
+
+import { BannerType } from '../types/banner';
 import { isAuthenticate } from '../utils/localStorage';
 import instance from './instance';
 
@@ -13,9 +14,9 @@ export const readbanner = (_id: number | string) => {
     const url = `/banners/${_id}`;
     return instance.get(url);
 };
-export const addbanner = (product: ProductType) => {
+export const addbanner = (banner: BannerType) => {
     const url = `/banners/${user?.user._id}`;
-    return instance.post(url, product, {
+    return instance.post(url, banner, {
         headers: {
             "Authorization": `Bearer ${user?.token}`
         }
@@ -29,9 +30,9 @@ export const removebanner = (id: number | string) => {
         }
     });
 };
-export const updatebanner = (product: ProductType) => {
-    const url = `/banners/${user?.user._id}/${product._id}`;
-    return instance.put(url, product, {
+export const updatebanner = (banner: BannerType) => {
+    const url = `/banners/${user?.user._id}/${banner._id}`;
+    return instance.put(url, banner, {
         headers: {
             "Authorization": `Bearer ${user?.token}`
         }

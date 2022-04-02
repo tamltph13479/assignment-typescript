@@ -31,12 +31,12 @@ const ProductList = ({ products }: ProductListProps) => {
                             <form action="">
                                 <div className=" khoiy border-solid border-2 border-[#f3f3f3] rounded-lg  ">
                                     <div className=" w-[100%] ">
-                                        <a href={`/products/${product._id}`}> <img src={product.img} /></a>
+                                        <NavLink to={`/products/${product._id}`}> <img src={product.img} /></NavLink>
                                     </div>
                                     <div className="py-[10px] px-[10px] leading-8">
-                                        <a href={`/products/${product._id}`} className="no-underline">
+                                        <NavLink to={`/products/${product._id}`} className="no-underline">
                                             <h4 className="no-underline text-blue-600 visited:text-purple-600 hover:text-red-500">{product.name}</h4>
-                                        </a>
+                                        </NavLink>
                                         <p className="text-[15px] text-[red]">{product.price}</p>
                                         <p>130,000,000 lượt xem</p>
                                     </div>
