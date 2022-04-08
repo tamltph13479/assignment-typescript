@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom';
+import { CategoryType } from '../../../types/category';
 import { ProductType } from '../../../types/Product'
 
 type ProductManagerProps = {
@@ -52,6 +53,7 @@ const ProductManager = (props: ProductManagerProps) => {
                                                             <th> <span className="ml-2">Name</span> </th>
                                                             <th> <span className="ml-2">Image</span> </th>
                                                             <th> <span className="ml-2">Price</span> </th>
+                                                            <th> <span className="ml-2">Desc</span> </th>
 
                                                             <th colSpan={2} className=""> <span className="pl-[50px]">Action</span> </th>
 
@@ -67,6 +69,8 @@ const ProductManager = (props: ProductManagerProps) => {
                                                                     <td >{product.name}</td>
                                                                     <td><img src={product.img} alt="" width="100px" /></td>
                                                                     <td >{product.price}</td>
+
+                                                                    <td >{product.desc}</td>
                                                                     <td colSpan={2} >    <Link to={`/admin/products/${product._id}/edit`} className="btn btn-primary">Update</Link>
                                                                         <button onClick={() => props.onRemove(product._id)} className="btn btn-danger">Remove</button></td>
                                                                 </tr>

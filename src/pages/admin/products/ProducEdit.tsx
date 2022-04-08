@@ -2,18 +2,21 @@ import React, { useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { read } from '../../../api/products';
+import { CategoryType } from '../../../types/category';
 import { ProductType } from '../../../types/Product';
 
 
 
 type ProductAddProps = {
-
+    categorys: CategoryType[];
     onUpdate: (product: ProductType) => void
 }
 type FormInputs = {
     name: string,
     price: number,
-    img: string
+    img: string,
+    desc: string,
+    category: string
 }
 
 const ProductEdit = (props: ProductAddProps) => {
@@ -87,11 +90,18 @@ const ProductEdit = (props: ProductAddProps) => {
                                                     <div className="col-span-6 sm:col-span-4 pb-[30px]">
                                                         <label className="block text-sm font-medium text-gray-700">Details</label>
                                                         <div className="mb-6">
-                                                            <textarea id="details" rows={3} className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-[20px]" />
+                                                            <textarea id="details" {...register('desc')} rows={3} className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-[20px]" />
                                                         </div>
 
                                                     </div>
+                                                    <select className="form-select" aria-label="Default select example" {...register('category')}>
+                                                        <option selected>Danh Muc</option>
+                                                        {props.categorys?.map((item, index) =>
 
+
+                                                            <option value={item._id}>{item.name}</option>
+                                                        )}
+                                                    </select>
                                                     <div>
                                                         <label className="block text-sm font-medium text-gray-700">
                                                             Cover photo

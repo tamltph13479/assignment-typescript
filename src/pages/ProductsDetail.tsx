@@ -22,12 +22,7 @@ const ProductsDetail = (props: Props) => {
         getProduct();
     }, [])
     return (
-        // <div className="m-auto">
 
-        //     <h1>{product?.name}</h1>
-        //     <img src={product?.img} ="" />
-        //     <p>{product?.price}</p>
-        // </div>
         <article className=" mx-auto w-[1200px] ">
             <div className="mx-auto w-[1200px] my-10">
                 <div className="grid grid-cols-2 mb-3">
@@ -71,7 +66,7 @@ const ProductsDetail = (props: Props) => {
                     <div className="mr-3">
                         <div className="border-[1px]">
                             <a href="">
-                                <img src={product?.img} />
+                                <img src={product?.img} width="100%" height="" />
                             </a>
                         </div>
                         <div className="flex flex-row justify-center">
@@ -214,7 +209,7 @@ const ProductsDetail = (props: Props) => {
             </div>
             <div className="">
                 <h1 className="uppercase text-[16px] font-bold border-b-[1px] mt-2 pl-1"> Thông tin chi tiết sản phẩm </h1>
-                <p className="text-[14px] leading-[1.8] mb-3"> ${'{'}data.details{'}'}
+                <p className="text-[14px] leading-[1.8] mb-3"> {product?.desc}
                 </p>
             </div>
             <div className="conten my-[20px]">

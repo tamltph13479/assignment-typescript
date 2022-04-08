@@ -40,6 +40,6 @@ export const update = (product: ProductType) => {
     });
 };
 export const SearchProductByName = (keyword: string) => {
-    const url = `/products?name_like=${keyword}`;
-    return instance.get(url);
+    const url = `/search?q=${keyword}`;
+    return instance.post(url);
 };

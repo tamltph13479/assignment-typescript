@@ -1,16 +1,20 @@
 import React from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { CategoryType } from '../../../types/category'
 import { ProductType } from '../../../types/Product'
 
 type ProducAddProps = {
 
     onAdd: (product: ProductType) => void
+    categorys: CategoryType[];
 }
 type FromInput = {
     name: string,
     price: number,
     img: string,
+    desc: string,
+    category: string
 
 }
 
@@ -19,7 +23,9 @@ const ProducAdd = (props: ProducAddProps) => {
     const navigate = useNavigate();
     const onSubmit: SubmitHandler<FromInput> = data => {
         props.onAdd(data)
-        navigate("/admin/products")
+        navigate("/admin/product")
+        console.log(data);
+
 
 
 
@@ -78,11 +84,18 @@ const ProducAdd = (props: ProducAddProps) => {
                                                     <div className="col-span-6 sm:col-span-4 pb-[30px]">
                                                         <label className="block text-sm font-medium text-gray-700">Details</label>
                                                         <div className="mb-6">
-                                                            <textarea id="details" rows={3} className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-[20px]" />
+                                                            <textarea id="details" {...register('desc')} rows={3} className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-[20px]" />
                                                         </div>
 
                                                     </div>
+                                                    <select className="form-select" aria-label="Default select example" {...register('category')}>
+                                                        <option selected>Danh Muc</option>
+                                                        {props.categorys?.map((item, index) =>
 
+
+                                                            <option value={item._id}>{item.name}</option>
+                                                        )}
+                                                    </select>
                                                     <div>
                                                         <label className="block text-sm font-medium text-gray-700">
                                                             Cover photo

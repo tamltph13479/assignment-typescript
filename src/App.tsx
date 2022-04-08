@@ -189,7 +189,7 @@ function App() {
       const { data } = await updateCategory(categor);
       if (data) {
         toast.success("Sua thanh cong");
-        setcategory([...category, data]);
+
 
       }
     } catch (error: {}) {
@@ -313,8 +313,8 @@ function App() {
           <Route index element={<Dashboard />} />
           <Route path="products" >
             <Route index element={<ProductManager products={products} onRemove={onHanderRemove} />} />
-            <Route path="add" element={<ProducAdd onAdd={onHandleAdd} />} />
-            <Route path=":id/edit" element={<ProductEdit onUpdate={onHandleUpdate} />} />
+            <Route path="add" element={<ProducAdd onAdd={onHandleAdd} categorys={category} />} />
+            <Route path=":id/edit" element={<ProductEdit onUpdate={onHandleUpdate} categorys={category} />} />
           </Route>
           <Route path="banner" >
             <Route index element={<BannerAdmin banners={banners} onRemove={removebaner} />} />
