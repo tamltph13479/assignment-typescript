@@ -293,7 +293,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<WebsiteLayout />}>
-          <Route index element={<HomePage products={products} posts={posts} categorys={category} />} />
+          <Route index element={<HomePage products={products} posts={posts} categorys={category} banners={banners} />} />
           <Route path="products">
             <Route index element={<Products products={products} />} />
             <Route path="/products/:id" element={< ProductsDetail />} />

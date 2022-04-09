@@ -3,6 +3,7 @@ import Advise from '../components/Advise';
 import Banner from '../components/Banner';
 import Blog from '../components/Blog';
 import ProductList from '../components/ProductList';
+import { BannerType } from '../types/banner';
 import { CategoryType } from '../types/category';
 import { PostType } from '../types/Post';
 
@@ -13,7 +14,7 @@ type HomePageProps = {
     products: ProductType[];
     posts: PostType[],
     categorys: CategoryType[],
-
+    banners: BannerType[];
 }
 
 const HomePage = (props: HomePageProps) => {
@@ -26,7 +27,7 @@ const HomePage = (props: HomePageProps) => {
                         < Advise categorys={props.categorys} />
                     </div>
                     <div className="banner bg-[white] w-[1000px] scroll-mb-[10px]">
-                        <Banner />
+                        <Banner banners={props.banners} />
                     </div>
                 </div>
                 <div className="mx-[10px] grid grid-cols-3 gap-6 overflow-hidden relative  my-[20px]">

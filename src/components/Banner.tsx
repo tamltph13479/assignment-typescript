@@ -1,36 +1,36 @@
 import React from 'react'
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
-type Props = {}
-const Banner = (props: Props) => {
-    const slideImages = [
-        {
-            url: 'https://images.squarespace-cdn.com/content/v1/53883795e4b016c956b8d243/1568455300105-1X8EOW3FLT27EN19OO30/chup-anh-san-pham-shynh2019-4.jpg',
+import { BannerType } from '../types/banner';
 
-        },
-        {
-            url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmH1-1nvrzTpDiTKqAqexbvP-e4BoWo66MeDI5-TTVChReoy_ItuGmpDxLNIpaKX0_UV4&usqp=CAU',
+type ProductManagerProps = {
+    banners: BannerType[];
 
-        },
-        {
-            url: 'https://logoaz.net/wp-content/uploads/2019/02/quy-tac-chup-anh-san-pham-phong-nen.jpg',
+}
+const Banner = (props: ProductManagerProps) => {
 
-        },
-    ];
     return (
         <>
             {/* <img src="https://suno.vn/blog/wp-content/uploads/2018/05/cach-chup-anh-san-pham-co-concept-758x400.jpg" alt="" width="100%" height="300" /> */}
             <div className="slide-container">
                 <Slide>
-                    {slideImages.map((slideImage, index) => (
-                        <div className="each-slide" key={index}>
-                            <div style={{ 'backgroundImage': `url(${slideImage.url})` }} >
-                                <span>{slideImage.caption}</span>
+
+                    {props.banners?.map((banner, index) => {
+                        console.log(banner)
+                        return (
+                            <div key={index} className="border-bottom text-[20px]">
+                                <div className="each-slide" key={index}>
+                                    <div className="image-container">
+                                        <img src={banner.img} width="100%" height="100%" />
+                                    </div>
+
+                                </div>
                             </div>
-                        </div>
-                    ))}
+
+                        )
+                    })}
                 </Slide>
-            </div>
+            </div >
 
 
 
@@ -43,3 +43,51 @@ const Banner = (props: Props) => {
 export default Banner
 
 
+
+
+
+// import React, { useRef, useState } from "react";
+// // Import Swiper React components
+// import { Swiper, SwiperSlide } from "swiper/react";
+
+// // Import Swiper styles
+// import "swiper/css";
+// import "swiper/css/pagination";
+// import "swiper/css/navigation";
+
+// type ProductManagerProps = {
+//     banners: BannerType[];
+
+// }
+// // import required modules
+// import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
+// import { BannerType } from "../types/banner";
+
+// const Banner = (props: ProductManagerProps) => {
+//     return (
+
+//         <Swiper
+//             cssMode={true}
+//             navigation={true}
+//             pagination={true}
+//             mousewheel={true}
+//             keyboard={true}
+//             modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+//             className="mySwiper"
+//         >
+//             {props.banners?.map((banner, index) => {
+//                 console.log(banner)
+//                 return (
+//                     <div key={index}>
+
+//                         <SwiperSlide><img src={banner.img} alt="" /></SwiperSlide>
+//                     </div>
+//                 )
+//             })}
+
+
+//         </Swiper>
+
+//     )
+// }
+// export default Banner
