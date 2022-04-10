@@ -3,7 +3,9 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import Search from './Search'
 import { isAuthenticate } from "../utils/localStorage"
 import { toast } from 'react-toastify'
-type Props = {}
+type Props = {
+    search: (keyword: string) => void
+}
 
 const Header = (props: Props) => {
     const navigate = useNavigate()
@@ -80,7 +82,7 @@ const Header = (props: Props) => {
                             <button className="bg-[#2b2d42] text-[#ffffff] hover:text-[#ff0000] px-[20px] py-[8px] ">All categories</button>
                         </div>
                     </div>
-                    <Search />
+                    <Search onSearch={props.search} />
                     <div className="flex mt-4 text-center ">
                         <div className="signin pl-5">
                             <ul className="flex">

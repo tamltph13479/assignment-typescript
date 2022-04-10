@@ -24,7 +24,6 @@ const ProducID = (props: Props) => {
         <>
 
 
-
             <article className=" mx-auto w-[1200px] ">
 
 
@@ -35,7 +34,7 @@ const ProducID = (props: Props) => {
                         {product?.map((product, index) => {
                             console.log(product)
                             return (
-                                <form action="" key={index}>
+                                <form action="">
                                     <div className=" khoiy border-solid border-2 border-[#f3f3f3] rounded-lg  ">
                                         <div className=" w-[100%] ">
                                             <NavLink to={`/products/${product._id}`}> <img src={product.img} /></NavLink>

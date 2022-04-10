@@ -4,7 +4,7 @@ import { Navigate, useNavigate } from 'react-router-dom'
 import WebsiteLayout from './pages/layouts/WebsiteLayout'
 import "bootstrap/dist/css/bootstrap.min.css"
 import { ProductType } from './types/Product'
-import { add, list, remove, update } from './api/products'
+import { add, list, remove, SearchProductByName, update } from './api/products'
 import ProductsDetail from './pages/ProductsDetail'
 import HomePage from './pages/HomePage'
 import Products from './pages/Products'
@@ -55,6 +55,8 @@ function App() {
   const [banners, setbanner] = useState<BannerType[]>([])
   const [category, setcategory] = useState<CategoryType[]>([])
   const [users, setusers] = useState<UserType[]>([])
+  const [searchProduct, setsearchProduct] = useState<ProductType[]>([]);
+
   useEffect(() => {
     const getProducts = async () => {
       const { data } = await list();
@@ -296,11 +298,15 @@ function App() {
     }
 
   }
+  const onhandleSearch = async (keyword: string) => {
+    const { data } = await SearchProductByName(keyword)
+    setsearchProduct(data)
 
+  }
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<WebsiteLayout />}>
+        <Route path="/" element={<WebsiteLayout searchProduct={onhandleSearch} />}>
           <Route index element={<HomePage products={products} posts={posts} categorys={category} banners={banners} />} />
           <Route path="products">
             <Route index element={<Products products={products} />} />
@@ -315,7 +321,7 @@ function App() {
             <Route path="/blog/:id" element={< BlogDetail />} />
           </Route>
           <Route path="search">
-            <Route index element={<SearchPase />} />
+            <Route index element={<SearchPase products={searchProduct} />} />
           </Route>
 
         </Route>

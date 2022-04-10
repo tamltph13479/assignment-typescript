@@ -6,12 +6,14 @@ import Header from '../../components/Header'
 
 
 
-type Props = {}
+type Props = {
+    searchProduct: (keyword: string) => void
+}
 
 const WebsiteLayout = (props: Props) => {
     return (
         <div className="">
-            <Header />
+            <Header search={props.searchProduct} />
 
             <Outlet />
             <Bottom />

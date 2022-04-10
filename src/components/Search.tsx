@@ -3,18 +3,19 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { SearchProductByName } from '../api/products';
 
-type Props = {}
-type FromInput = {
+type Props = {
+    onSearch: (keyword: string) => void
+}
+type FormInputs = {
     q: string
-
 }
 const Search = (props: Props) => {
-    const { register, handleSubmit, formState: { errors } } = useForm<FromInput>();
-    const navigate = useNavigate();
-    const onSubmit: SubmitHandler<FromInput> = async data => {
-        const { data: keyword } = await SearchProductByName(data.q)
-        console.log(keyword);
-        navigate("/search")
+    const { register, handleSubmit, formState: { errors } } = useForm<FormInputs>();
+    const navigate = useNavigate()
+    const onSubmit: SubmitHandler<FormInputs> = data => {
+        props.onSearch(data.q)
+        navigate(`/search?q=${data.q}`)
+
     }
     return (
         <form action="/search" className="w-[700px] mt-4 pl-10 flex " onSubmit={handleSubmit(onSubmit)}>
