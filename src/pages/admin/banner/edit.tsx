@@ -71,7 +71,9 @@ const BannerEdit = (props: ProducAddProps) => {
                                                 <form className="w-[800px] ml-[20px]" onSubmit={handleSubmit(onSumbit)}>
                                                     <div className="col-span-6 sm:col-span-4 py-[30px]">
                                                         <label className="block text-sm font-medium text-gray-700">Name</label>
-                                                        <input type="text" className="form-control" id="name" {...register('img')} />
+                                                        <input type="text" className="form-control" id="name" {...register('img', { required: true })} />
+
+                                                        {errors.img && <p className="text-[15px] text-red-500">Bắt buộc phải nhập trường này!</p>}
                                                     </div>
                                                     <button type="submit" className="btn btn-primary ml-[20px] my-[30px]">Submit</button>
                                                 </form>

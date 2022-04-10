@@ -23,7 +23,7 @@ const ProducAdd = (props: ProducAddProps) => {
     const navigate = useNavigate();
     const onSubmit: SubmitHandler<FromInput> = data => {
         props.onAdd(data)
-        navigate("/admin/product")
+        navigate("/admin/products")
         console.log(data);
 
 
@@ -70,21 +70,28 @@ const ProducAdd = (props: ProducAddProps) => {
                                                 <form className="w-[800px] ml-[20px]" onSubmit={handleSubmit(onSubmit)}>
                                                     <div className="col-span-6 sm:col-span-4 py-[30px]">
                                                         <label className="block text-sm font-medium text-gray-700">Name</label>
-                                                        <input type="text" className="form-control" id="name" {...register('name')} />
+                                                        <input type="text" className="form-control" id="name" {...register('name', { required: true })} />
+
+                                                        {errors.name && <p className="text-[15px] text-red-500">Bắt buộc phải nhập trường này!</p>}
                                                     </div>
                                                     <div className="col-span-6 sm:col-span-4 pb-[30px]">
                                                         <label className="block text-sm font-medium text-gray-700">Price</label>
-                                                        <input type="number" className="form-control" id="price" {...register('price')} />
+                                                        <input type="number" className="form-control" id="name" {...register('price', { required: true })} />
+
+                                                        {errors.price && <p className="text-[15px] text-red-500">Bắt buộc phải nhập trường này!</p>}
                                                     </div>
                                                     <div className="col-span-6 sm:col-span-4 pb-[30px]">
                                                         <label className="block text-sm font-medium text-gray-700">Image</label>
-                                                        <input type="text" className="form-control" id="img" {...register('img')} />
+                                                        <input type="text" className="form-control" id="name" {...register('img', { required: true })} />
+
+                                                        {errors.img && <p className="text-[15px] text-red-500">Bắt buộc phải nhập trường này!</p>}
                                                     </div>
 
                                                     <div className="col-span-6 sm:col-span-4 pb-[30px]">
                                                         <label className="block text-sm font-medium text-gray-700">Details</label>
                                                         <div className="mb-6">
-                                                            <textarea id="details" {...register('desc')} rows={3} className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-[20px]" />
+                                                            <textarea id="details" {...register('desc', { required: true })} rows={3} className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-[20px]" />
+                                                            {errors.desc && <p className="text-[15px] text-red-500">Bắt buộc phải nhập trường này!</p>}
                                                         </div>
 
                                                     </div>

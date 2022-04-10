@@ -22,13 +22,10 @@ const UserAdd = (props: ProducAddProps) => {
     const { register, handleSubmit, formState: { errors } } = useForm<FromInput>();
     const navigate = useNavigate();
 
-    const onSubmit: SubmitHandler<FromInput> = async (user) => {
-        const { data } = await signup(user);
-        if (data) {
-            toast.success("Bạn đã đăng ký thành công");
-            navigate('/admin/user')
+    const onSubmit: SubmitHandler<FromInput> = data => {
+        props.onAdd(data)
+        navigate("/admin/user")
 
-        }
     }
     return (
         <>
@@ -70,15 +67,19 @@ const UserAdd = (props: ProducAddProps) => {
                                                 <form className="w-[800px] ml-[20px]" onSubmit={handleSubmit(onSubmit)} method="post">
                                                     <div className="col-span-6 sm:col-span-4 py-[30px]">
                                                         <label className="block text-sm font-medium text-gray-700">Name</label>
-                                                        <input type="text" className="form-control" id="name" {...register('name')} />
+                                                        <input type="text" className="form-control" id="name" {...register('name', { required: true })} />
+                                                        {errors.name && <p className="text-[15px] text-red-500">Bắt buộc phải nhập trường này!</p>}
                                                     </div>
                                                     <div className="col-span-6 sm:col-span-4 py-[30px]">
                                                         <label className="block text-sm font-medium text-gray-700">Email</label>
-                                                        <input type="text" className="form-control" id="name" {...register('email')} />
+                                                        <input type="text" className="form-control" id="name" {...register('email', { required: true })} />
+
+                                                        {errors.email && <p className="text-[15px] text-red-500">Bắt buộc phải nhập trường này!</p>}
                                                     </div>
                                                     <div className="col-span-6 sm:col-span-4 py-[30px]">
                                                         <label className="block text-sm font-medium text-gray-700">Password</label>
-                                                        <input type="text" className="form-control" id="name" {...register('password')} />
+                                                        <input type="text" className="form-control" id="name" {...register('password', { required: true })} />
+                                                        {errors.password && <p className="text-[15px] text-red-500">Bắt buộc phải nhập trường này!</p>}
                                                     </div>
                                                     <button type="submit" className="btn btn-primary ml-[20px] my-[30px]">Submit</button>
                                                 </form>

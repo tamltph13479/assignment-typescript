@@ -39,3 +39,7 @@ export const updateCategory = (product: CategoryType) => {
         }
     });
 };
+export const readCategoryID = (_id: number | string) => {
+    const url = `/productID/${_id}`;
+    return instance.get(url);
+};

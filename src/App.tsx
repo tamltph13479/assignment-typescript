@@ -27,7 +27,7 @@ import { BannerType } from './types/banner'
 import { addbanner, listbanner, removebanner, updatebanner } from './api/banner'
 import BannerAdmin from './pages/admin/banner'
 import { CategoryType } from './types/category'
-import { addCategory, listCategory, removeCategory, updateCategory } from './api/category'
+import { addCategory, listCategory, readCategoryID, removeCategory, updateCategory } from './api/category'
 import CategoryAdmin from './pages/admin/category/index'
 import CategoryAdd from './pages/admin/category/add'
 import CategoryEdit from './pages/admin/category/edit'
@@ -46,6 +46,8 @@ import PrivateRouter from './components/PrivateRouter'
 import SearchPase from './pages/SearchPase'
 import BannerAdd from './pages/admin/banner/add'
 import BannerEdit from './pages/admin/banner/edit'
+import { signup } from './api/auth'
+import ProducID from './pages/producID'
 function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [products, setProducts] = useState<ProductType[]>([])
@@ -60,7 +62,10 @@ function App() {
       setProducts(data);
     }
     getProducts();
+
+
     // users
+
     const getusers = async () => {
       const { data } = await listusers();
       console.log(data);
@@ -90,6 +95,7 @@ function App() {
     getCategory()
 
 
+
   }, []);
   // xoa sp
   const onHanderRemove = async (id: number | string) => {
@@ -105,6 +111,7 @@ function App() {
     }
 
   }
+
   // them
   const onHandleAdd = async (product: ProductType) => {
     try {
@@ -253,7 +260,7 @@ function App() {
   // them tai khoan
   const onHanAdd = async (user: UserType) => {
     try {
-      const { data } = await addusers(user);
+      const { data } = await signup(user);
       if (data) {
         toast.success("Them thanh cong");
         setusers([...users, data]);
@@ -289,6 +296,7 @@ function App() {
     }
 
   }
+
   return (
     <div className="App">
       <Routes>
@@ -298,6 +306,10 @@ function App() {
             <Route index element={<Products products={products} />} />
             <Route path="/products/:id" element={< ProductsDetail />} />
           </Route>
+          <Route path="productID">
+            <Route path="/productID/:id" element={< ProducID />} />
+          </Route>
+
           <Route path="blog">
             <Route index element={<Blog posts={posts} />} />
             <Route path="/blog/:id" element={< BlogDetail />} />
