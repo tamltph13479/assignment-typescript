@@ -15,6 +15,7 @@ type HomePageProps = {
     posts: PostType[],
     categorys: CategoryType[],
     banners: BannerType[];
+    onAddToCart: (cart: any) => void
 }
 
 const HomePage = (props: HomePageProps) => {
@@ -59,7 +60,7 @@ const HomePage = (props: HomePageProps) => {
                         </div>
                     </div>
                 </div>
-                <ProductList products={props.products} />
+                <ProductList products={props.products} onAddToCart={props.onAddToCart} />
                 <div className="conten my-[20px]">
                     <h1 className="font-bold text-[20px] py-[20px]">New Arrivals</h1>
                     <div>

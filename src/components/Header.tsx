@@ -86,7 +86,7 @@ const Header = (props: Props) => {
                     <div className="flex mt-4 text-center ">
                         <div className="signin pl-5">
                             <ul className="flex">
-                                <a href="/#//cart" className="no-underline">   <button className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[blue] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Gio Hàng </button></a>
+                                <NavLink to="/cart" className="no-underline">   <button className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[blue] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Gio Hàng </button></NavLink>
                             </ul>
                         </div>
                     </div>

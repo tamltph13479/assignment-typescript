@@ -4,8 +4,9 @@ import { ProductType } from '../types/Product';
 
 type ProductListProps = {
     products: ProductType[];
+    onAddToCart: (cart: any) => void;
 }
-const ProductList = ({ products }: ProductListProps) => {
+const ProductList = (props: ProductListProps) => {
     return (
 
         <article className=" mx-auto w-[1200px] ">
@@ -15,7 +16,7 @@ const ProductList = ({ products }: ProductListProps) => {
             <div className="conten my-[20px]">
                 <h1 className="font-bold text-[20px] py-[20px]">New Arrivals</h1>
                 <div className="product grid grid-cols-4 gap-5 ">
-                    {products?.map((product, index) => {
+                    {props.products?.map((product, index) => {
                         console.log(product)
                         return (
                             // <div className="col-3" key={index}>
@@ -41,7 +42,7 @@ const ProductList = ({ products }: ProductListProps) => {
                                         <p>130,000,000 lượt xem</p>
                                     </div>
                                     <div className="conten-item ">
-                                        <button>Add to cart</button>
+                                        <NavLink to=""><button onClick={() => props.onAddToCart(product._id)}>Add to cart</button></NavLink>
                                     </div>
                                 </div>
                             </form>

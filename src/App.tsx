@@ -4,7 +4,7 @@ import { Navigate, useNavigate } from 'react-router-dom'
 import WebsiteLayout from './pages/layouts/WebsiteLayout'
 import "bootstrap/dist/css/bootstrap.min.css"
 import { ProductType } from './types/Product'
-import { add, list, remove, SearchProductByName, update } from './api/products'
+import { add, list, read, remove, SearchProductByName, update } from './api/products'
 import ProductsDetail from './pages/ProductsDetail'
 import HomePage from './pages/HomePage'
 import Products from './pages/Products'
@@ -48,6 +48,8 @@ import BannerAdd from './pages/admin/banner/add'
 import BannerEdit from './pages/admin/banner/edit'
 import { signup } from './api/auth'
 import ProducID from './pages/producID'
+import CartPage from './pages/Cartpase'
+import { addToCart, decreaseItemInCart, increaseItemInCart, removeItemInCart } from './utils/cart'
 function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [products, setProducts] = useState<ProductType[]>([])
@@ -56,7 +58,7 @@ function App() {
   const [category, setcategory] = useState<CategoryType[]>([])
   const [users, setusers] = useState<UserType[]>([])
   const [searchProduct, setsearchProduct] = useState<ProductType[]>([]);
-
+  const [cart, setCart] = useState<ProductType[]>([]);
   useEffect(() => {
     const getProducts = async () => {
       const { data } = await list();
@@ -303,23 +305,50 @@ function App() {
     setsearchProduct(data)
 
   }
+
+
+
+  const onHandleAddToCart = async (id: number) => {
+    const { data } = await read(id)
+    addToCart({ ...data, quantity: 1 }, function () {
+      toast.success(`Thêm ${data.name} vào giỏ hàng thành công!`)
+      setCart(JSON.parse(localStorage.getItem('cart') as string))
+    })
+  }
+  const onHandleIncreaseItemInCart = (id: number) => {
+    increaseItemInCart(id, () => {
+      setCart(JSON.parse(localStorage.getItem('cart') as string))
+    })
+  }
+  const onHandleDecreaseItemInCart = (id: number) => {
+    decreaseItemInCart(id, () => {
+      setCart(JSON.parse(localStorage.getItem('cart') as string))
+    })
+  }
+
+  const onHandleRemoveCart = (id: number) => {
+    removeItemInCart(id, () => {
+      setCart(JSON.parse(localStorage.getItem('cart') as string))
+    })
+  }
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<WebsiteLayout searchProduct={onhandleSearch} />}>
-          <Route index element={<HomePage products={products} posts={posts} categorys={category} banners={banners} />} />
+          <Route index element={<HomePage products={products} posts={posts} categorys={category} banners={banners} onAddToCart={onHandleAddToCart} />} />
           <Route path="products">
             <Route index element={<Products products={products} />} />
             <Route path="/products/:id" element={< ProductsDetail />} />
           </Route>
           <Route path="productID">
-            <Route path="/productID/:id" element={< ProducID />} />
+            <Route path="/productID/:id" element={< ProducID categorys={category} />} />
           </Route>
 
           <Route path="blog">
             <Route index element={<Blog posts={posts} />} />
             <Route path="/blog/:id" element={< BlogDetail />} />
           </Route>
+          <Route path="cart" element={<CartPage onRemoveCart={onHandleRemoveCart} onDecreaseItemInCart={onHandleDecreaseItemInCart} onIncreaseItemInCart={onHandleIncreaseItemInCart} />} />
           <Route path="search">
             <Route index element={<SearchPase products={searchProduct} />} />
           </Route>
@@ -363,7 +392,9 @@ function App() {
 }
 
 export default App
-function then(arg0: () => any) {
+
+
+function setCart(arg0: any) {
   throw new Error('Function not implemented.')
 }
 
